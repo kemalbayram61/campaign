@@ -1,30 +1,24 @@
-from abc import ABC, abstractmethod
+from interfaces.product import IProduct
 
-class IProduct(ABC):
+class SimpleProduct(IProduct):
     __name     : str
     __price    : str
     __category : str
 
-    @abstractmethod
     def setPrice(self, price: float) ->None:
-        pass
+        self.__price = price
 
-    @abstractmethod
     def setName(self, name: str) ->None:
-        pass
+        self.__name = name
 
-    @abstractmethod
     def setCategory(self, category: str) ->None:
-        pass
+        self.__category = category
 
-    @abstractmethod
     def getPrice(self) ->float:
-        pass
+        return  self.__price
 
-    @abstractmethod
     def getName(self) ->str:
-        pass
+        return  self.__name
 
-    @abstractmethod
     def getCategory(self) ->str:
-        pass
+        return  self.__category

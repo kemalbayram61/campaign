@@ -1,6 +1,7 @@
-from abc   import ABC, abstractmethod
-from enums import CampaignImplementationType, CampaignType, CalculationType
-class ICampaign(ABC):
+from interfaces.campaign import ICampaign
+from interfaces.enums    import CampaignType, CampaignImplementationType, CalculationType
+
+class SimpleCampaign(ICampaign):
     __name               : str
     __implementationType : CampaignImplementationType
     __campaignType       : CampaignType
@@ -8,50 +9,38 @@ class ICampaign(ABC):
     __amount             : float
     __count              : int
 
-    @abstractmethod
     def setName(self, name: str) ->None:
-        pass
+        self.__name = name
 
-    @abstractmethod
     def setImplementationType(self, implementationType: CampaignImplementationType) ->None:
-        pass
+        self.__implementationType = implementationType
 
-    @abstractmethod
     def setCampaignType(self, campaignType: CampaignType) ->None:
-        pass
+        self.__campaignType = campaignType
 
-    @abstractmethod
     def setCalculationType(self, calculationType: CalculationType) ->None:
-        pass
+        self.__calculationType = calculationType
 
-    @abstractmethod
     def setAmount(self, amount: float) ->None:
-        pass
+        self.__amount = amount
 
-    @abstractmethod
     def setCount(self, count: int) ->None:
-        pass
+        self.__count = count
 
-    @abstractmethod
     def getName(self) ->str:
-        pass
+        return  self.__name
 
-    @abstractmethod
     def getImplementationType(self) ->CampaignImplementationType:
-        pass
+        return  self.__implementationType
 
-    @abstractmethod
     def getCampaignType(self) ->CampaignType:
-        pass
+        return  self.__campaignType
 
-    @abstractmethod
     def getCalculationType(self) ->CalculationType:
-        pass
+        return  self.__calculationType
 
-    @abstractmethod
     def getAmount(self) ->float:
-        pass
+        return self.__amount
 
-    @abstractmethod
     def getCount(self) ->int:
-        pass
+        return  self.__count
