@@ -1,8 +1,16 @@
 from enum import Enum
 
+class ProductCategory(Enum):
+    C1 = 0
+    C2 = 1
+    C3 = 2
+    C4 = 3
+    C5 = 4
+    CE = 5
+
 class CampaignImplementationType(Enum):
-    PRODUCT      = 0
-    PRODUCT_TYPE = 1
+    PRODUCT          = 0
+    PRODUCT_CATEGORY = 1
 
 class CampaignType(Enum):
     TOTAL_PRICE    = 0

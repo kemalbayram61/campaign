@@ -1,9 +1,9 @@
-from abc import ABC, abstractmethod
-
+from abc              import ABC, abstractmethod
+from interfaces.enums import ProductCategory
 class IProduct(ABC):
     __name     : str
     __price    : str
-    __category : str
+    __category : ProductCategory
 
     @abstractmethod
     def setPrice(self, price: float) ->None:
@@ -26,5 +26,5 @@ class IProduct(ABC):
         pass
 
     @abstractmethod
-    def getCategory(self) ->str:
+    def getCategory(self) ->ProductCategory:
         pass

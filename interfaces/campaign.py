@@ -1,5 +1,5 @@
-from abc   import ABC, abstractmethod
-from enums import CampaignImplementationType, CampaignType, CalculationType
+from abc              import ABC, abstractmethod
+from interfaces.enums import CampaignImplementationType, CampaignType, CalculationType, ProductCategory
 class ICampaign(ABC):
     __name               : str
     __implementationType : CampaignImplementationType
@@ -7,6 +7,16 @@ class ICampaign(ABC):
     __calculationType    : CalculationType
     __amount             : float
     __count              : int
+    __productNameList    : list[str]
+    __productCategoryList: list[ProductCategory]
+
+    @abstractmethod
+    def setProductNamelist(self, namelist: list[str]) ->None:
+        pass
+
+    @abstractmethod
+    def setProductCategorylist(self, categoryList: list[ProductCategory]) ->None:
+        pass
 
     @abstractmethod
     def setName(self, name: str) ->None:
@@ -30,6 +40,14 @@ class ICampaign(ABC):
 
     @abstractmethod
     def setCount(self, count: int) ->None:
+        pass
+
+    @abstractmethod
+    def getProductNamelist(self) ->list[str]:
+        pass
+
+    @abstractmethod
+    def getProductCategorylist(self) ->list[ProductCategory]:
         pass
 
     @abstractmethod

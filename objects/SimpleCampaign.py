@@ -1,5 +1,5 @@
 from interfaces.campaign import ICampaign
-from interfaces.enums    import CampaignType, CampaignImplementationType, CalculationType
+from interfaces.enums    import CampaignType, CampaignImplementationType, CalculationType, ProductCategory
 
 class SimpleCampaign(ICampaign):
     __name               : str
@@ -8,6 +8,25 @@ class SimpleCampaign(ICampaign):
     __calculationType    : CalculationType
     __amount             : float
     __count              : int
+    __productNameList    : list[str]
+    __productCategoryList: list[ProductCategory]
+
+    def __init__(self, name: str, implementationType: CampaignImplementationType, campaignType: CampaignType, calculationType: CalculationType, amount: float, count: int, productNameList: list[str], productCategoryList: list[ProductCategory]):
+        self.__name                = name
+        self.__implementationType  = implementationType
+        self.__campaignType        = campaignType
+        self.__calculationType     = calculationType
+        self.__amount              = amount
+        self.__productNameList     = productNameList
+        self.__productCategoryList = productCategoryList
+        self.__count               = count
+
+
+    def setProductNamelist(self, namelist: list[str]) ->None:
+        self.__productNameList = namelist
+
+    def setProductCategorylist(self, categoryList: list[ProductCategory]) ->None:
+        self.__productCategoryList = categoryList
 
     def setName(self, name: str) ->None:
         self.__name = name
@@ -26,6 +45,12 @@ class SimpleCampaign(ICampaign):
 
     def setCount(self, count: int) ->None:
         self.__count = count
+
+    def getProductNamelist(self) ->list[str]:
+        return self.__productNameList
+
+    def getProductCategorylist(self) ->list[ProductCategory]:
+        return self.__productCategoryList
 
     def getName(self) ->str:
         return  self.__name
