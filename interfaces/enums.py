@@ -12,3 +12,5 @@ class CampaignType(Enum):
 class CalculationType(Enum):
     AMOUNT = 0
     RATE   = 1
+    BIGGEST= 2
+    LOWEST = 3
