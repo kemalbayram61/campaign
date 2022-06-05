@@ -64,12 +64,24 @@ def main():
                         ["Teksüt Kaşar Peyniri", "Nestle Fındık Aromalı"],
                         [ProductCategory.C1])
 
-    campaignCalculator  = CampaignCalculator()
-    request             = Request()
-    request.productList = [product1, product2, product3, product4, product5, product6]
-    request.campaign    = campaign6
-    response            = campaignCalculator.calculate(request)
-    print(str(response))
+    campaign7 = SimpleCampaign("Seçili ürünler %20 indirimli",
+                        CampaignImplementationType.PRODUCT,
+                        CampaignType.EACH_PRICE,
+                        CalculationType.RATE,
+                        20,
+                        1,
+                        ["Trabzon peyniri"],
+                        [ProductCategory.C1])
+
+    campaignCalculator                 = CampaignCalculator()
+    productList: list[SimpleProduct]   = [product1, product2, product3, product4, product5, product6]
+    campaignList: list[SimpleCampaign] = [campaign1, campaign2, campaign3, campaign4, campaign5, campaign6, campaign7]
+    #request             = Request()
+    #request.productList = productList
+    #request.campaign    = campaign7
+    #response            = campaignCalculator.calculate(request)
+    response = campaignCalculator.findEligibleCampaigns(productList, campaignList)
+    print(len(response))
 
 if __name__ == '__main__':
     main()

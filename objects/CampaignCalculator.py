@@ -1,4 +1,5 @@
 from objects.SimpleProduct    import SimpleProduct
+from objects.SimpleCampaign   import SimpleCampaign
 from interfaces.enums         import CampaignType, CampaignImplementationType, CalculationType, ProductCategory
 from objects.request          import Request
 from objects.response         import Response
@@ -71,6 +72,17 @@ class CampaignCalculator:
         for i in range(withoutCount, len(productList)):
             __response = __response + productList[i].getPrice()
 
+        return __response
+
+    def findEligibleCampaigns(self, productList: list[SimpleProduct], campaignList: list[SimpleCampaign]) ->list[SimpleCampaign]:
+        __response: list[SimpleCampaign] = []
+        for campaign in campaignList:
+            __currentRequest             = Request()
+            __currentRequest.campaign    = campaign
+            __currentRequest.productList = productList
+            __currentCalculate           = self.calculate(__currentRequest)
+            if(len(__currentCalculate.productList) > 0 or __currentCalculate.totalPrice != 0.0):
+                __response.append(campaign)
         return __response
 
     def calculate(self, request: Request) ->Response:
