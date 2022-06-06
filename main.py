@@ -12,14 +12,14 @@ def main():
     product5 = SimpleProduct("Teksüt Kaşar Peyniri"  , 74.9 , ProductCategory.C3)
     product6 = SimpleProduct("Mini Vanilyalı Kek"    , 20.65, ProductCategory.C2)
 
-    campaign1 = SimpleCampaign("2 kahve alana 3.sü bedava",
-                        CampaignImplementationType.PRODUCT_CATEGORY,
-                        CampaignType.SUBTRACT_PRICE,
-                        CalculationType.LOWEST,
-                        0.0,
-                        1,
-                        [""],
-                        [ProductCategory.C1])
+    campaign1 = SimpleCampaign(name         = "2 kahve alana 3.sü bedava",
+                        implementationType  = CampaignImplementationType.PRODUCT_CATEGORY,
+                        campaignType        = CampaignType.SUBTRACT_PRICE,
+                        calculationType     = CalculationType.LOWEST,
+                        amount              = 0.0,
+                        count               = 1,
+                        productNameList     = [""],
+                        productCategoryList = [ProductCategory.C1])
     campaign2 = SimpleCampaign("sepette %10 indirim",
                         CampaignImplementationType.PRODUCT_CATEGORY,
                         CampaignType.TOTAL_PRICE,

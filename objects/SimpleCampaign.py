@@ -11,7 +11,15 @@ class SimpleCampaign(ICampaign):
     __productNameList    : list[str]
     __productCategoryList: list[ProductCategory]
 
-    def __init__(self, name: str, implementationType: CampaignImplementationType, campaignType: CampaignType, calculationType: CalculationType, amount: float, count: int, productNameList: list[str], productCategoryList: list[ProductCategory]):
+    def __init__(self,
+                 name: str,
+                 implementationType: CampaignImplementationType,
+                 campaignType: CampaignType,
+                 calculationType: CalculationType,
+                 amount: float,
+                 count: int,
+                 productNameList: list[str],
+                 productCategoryList: list[ProductCategory]):
         self.__name                = name
         self.__implementationType  = implementationType
         self.__campaignType        = campaignType
