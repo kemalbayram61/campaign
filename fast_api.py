@@ -4,7 +4,6 @@ from objects.CampaignCalculator  import CampaignCalculator
 from objects.SimpleCampaign      import SimpleCampaign
 from objects.request             import Request
 from fastapi                     import FastAPI
-import json
 
 app = FastAPI()
 
