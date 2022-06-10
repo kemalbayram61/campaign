@@ -5,12 +5,13 @@ from interfaces.enums           import ProductCategory, CampaignImplementationTy
 from objects.request            import Request
 
 def main():
-    product1 = SimpleProduct("Jacobs Vanilya Aromalı", 80.1 , ProductCategory.C1)
-    product2 = SimpleProduct("Mini Kakaolu Kek"      , 11.65, ProductCategory.C2)
-    product3 = SimpleProduct("Jacobs Fındık Aromalı" , 80.1 , ProductCategory.C1)
-    product4 = SimpleProduct("Nestle Fındık Aromalı" , 76.1 , ProductCategory.C1)
-    product5 = SimpleProduct("Teksüt Kaşar Peyniri"  , 74.9 , ProductCategory.C3)
-    product6 = SimpleProduct("Mini Vanilyalı Kek"    , 20.65, ProductCategory.C2)
+    product1 = SimpleProduct("Jacobs Vanilya Aromalı"     , 80.1 , ProductCategory.C1)
+    product2 = SimpleProduct("Mini Kakaolu Kek"           , 11.65, ProductCategory.C2)
+    product3 = SimpleProduct("Jacobs Fındık Aromalı"      , 80.1 , ProductCategory.C1)
+    product4 = SimpleProduct("Nestle Fındık Aromalı"      , 76.1 , ProductCategory.C1)
+    product5 = SimpleProduct("Teksüt Kaşar Peyniri"       , 74.9 , ProductCategory.C3)
+    product6 = SimpleProduct("Mini Vanilyalı Kek"         , 20.65, ProductCategory.C2)
+    product7 = SimpleProduct("Eyüp Sabri Tuncer Kolonyağ" , 50.65, ProductCategory.C4)
 
     campaign1 = SimpleCampaign(name         = "2 kahve alana 3.sü bedava",
                         implementationType  = CampaignImplementationType.PRODUCT_CATEGORY,
@@ -73,15 +74,25 @@ def main():
                         ["Trabzon peyniri"],
                         [ProductCategory.C1])
 
+    campaign8 = SimpleCampaign("Eyüp Sabri Tuncer Kolonyağ Yarı Fiyatına",
+                        CampaignImplementationType.PRODUCT,
+                        CampaignType.EACH_PRICE,
+                        CalculationType.RATE,
+                        50,
+                        0,
+                        ["Eyüp Sabri Tuncer Kolonyağ"],
+                        [ProductCategory.C4])
+
     campaignCalculator                 = CampaignCalculator()
-    productList: list[SimpleProduct]   = [product1, product2, product3, product4, product5, product6]
-    campaignList: list[SimpleCampaign] = [campaign1, campaign2, campaign3, campaign4, campaign5, campaign6, campaign7]
-    #request             = Request()
-    #request.productList = productList
-    #request.campaign    = campaign7
-    #response            = campaignCalculator.calculate(request)
-    response = campaignCalculator.findEligibleCampaigns(productList, campaignList)
-    print(len(response))
+    productList: list[SimpleProduct]   = [product1, product2, product3, product4, product5, product6, product7]
+    campaignList: list[SimpleCampaign] = [campaign1, campaign2, campaign3, campaign4, campaign5, campaign6, campaign7, campaign8]
+    request             = Request()
+    request.productList = productList
+    request.campaign    = campaign8
+    response            = campaignCalculator.calculate(request)
+    #response = campaignCalculator.findEligibleCampaigns(productList, campaignList)
+    #print(len(response))
+    print(str(response))
 
 if __name__ == '__main__':
     main()
